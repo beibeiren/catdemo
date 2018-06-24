@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use App\Model\Entity\User;
 /**
  * Login Controller
  *
@@ -19,16 +19,19 @@ class LoginController extends AppController
      */
     public function index()
     {
+        $user = new User();
         if ($this->request->is(['post'])) {
             exit;
         }
+        $this->set(compact('user'));
     }
 
     public function login()
     {
-
-        // $this->request->allowMethod(['post']);
-        // return $this->redirect(['action' => 'index']);
+        $this->request->allowMethod(['post']);
+        $user = $this->request->getData();
+        
+        return $this->redirect(['controller' => 'articles']);
     }
 
 }
