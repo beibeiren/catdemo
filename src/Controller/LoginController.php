@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Model\Entity\User;
+//use Cake\ORM\TableRegistry;
+
 /**
  * Login Controller
  *
@@ -19,6 +21,10 @@ class LoginController extends AppController
      */
     public function index()
     {
+        
+        // $this->loadModel('Users');
+        // $user = $this->Users->newEntity();
+        // $user = TableRegistry::get('Users')->newEntity();
         $user = new User();
         if ($this->request->is(['post'])) {
             exit;
@@ -30,7 +36,8 @@ class LoginController extends AppController
     {
         $this->request->allowMethod(['post']);
         $user = $this->request->getData();
-        
+        $this->loadModel('Users');
+        $user = $this->Users->newEntity();
         return $this->redirect(['controller' => 'articles']);
     }
 
