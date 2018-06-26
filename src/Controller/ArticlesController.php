@@ -40,7 +40,8 @@ class ArticlesController extends AppController
         $article = $this->Articles->get($id, [
             'contain' => ['Users', 'Tags']
         ]);
-
+        var_dump($article->get('slug'));
+            exit;
         $this->set('article', $article);
     }
 
