@@ -41,4 +41,7 @@ class Article extends Entity
         'user' => true,
         'tags' => true
     ];
+   
+    
 }
+
